@@ -20,8 +20,8 @@ namespace SerialCommunication
         {
             InitializeComponent();
             serialPortArduino = new SerialPort();
-            serialPortArduino.ReadTimeout = 1000;
-            serialPortArduino.WriteTimeout = 1000;
+            serialPortArduino.ReadTimeout = 2000;
+            serialPortArduino.WriteTimeout = 2000;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -93,6 +93,7 @@ namespace SerialCommunication
                     
                     // Open connection
                     serialPortArduino.Open();
+                    System.Threading.Thread.Sleep(500);
                     
                     // Send ping and wait for pong
                     serialPortArduino.WriteLine("ping");
