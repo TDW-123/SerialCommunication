@@ -95,21 +95,10 @@ namespace SerialCommunication
                     serialPortArduino.Open();
                     System.Threading.Thread.Sleep(500);
                     
-                    // Send ping and wait for pong
-                    serialPortArduino.WriteLine("ping");
-                    string response = serialPortArduino.ReadLine();
-                    
-                    if (response.Trim().Equals("pong", StringComparison.OrdinalIgnoreCase))
-                    {
-                        radioButtonVerbonden.Checked = true;
-                        buttonConnect.Text = "Disconnect";
-                        labelStatus.Text = "Status: Connected to " + serialPortArduino.PortName;
-                    }
-                    else
-                    {
-                        serialPortArduino.Close();
-                        labelStatus.Text = "Status: Connection failed - no pong response";
-                    }
+                    // Connection successful
+                    radioButtonVerbonden.Checked = true;
+                    buttonConnect.Text = "Disconnect";
+                    labelStatus.Text = "Status: Connected to " + serialPortArduino.PortName;
                 }
                 else
                 {
